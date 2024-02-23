@@ -1,0 +1,31 @@
+name: Publish Docker Hub images
+
+on: 
+  push:
+    branches: ['master']
+    
+env:
+  PROJECT_PATH: GeekShopping.CouponAPI
+  PROJECT_NAME: geek-shopping-coupon-api-dotnet
+
+jobs:
+  CI:
+    name: Build and Push Docker image
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+          
+      - name: Docker Login
+        uses: docker/login-action@v3.0.0
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with: 
+          context: ${{ env.PROJECT_PATH }}
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.PROJECT_NAME }}:${{ github.run_number }}, ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.PROJECT_NAME }}:latest

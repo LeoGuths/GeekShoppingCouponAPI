@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <IsPackable>true</IsPackable>
+
+        <PackageId>GeekShopping.CouponAPI</PackageId>
+        <Version>1.0.0</Version>
+        <Authors>LeoGuths</Authors>
+        <RepositoryUrl>https://github.com/LeoGuths/GeekShopping</RepositoryUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Mapster" Version="7.4.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.26" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.26" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.26">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.2" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="..\.dockerignore">
+            <Link>.dockerignore</Link>
+            <DependentUpon>Dockerfile</DependentUpon>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <_ContentIncludedByDefault Remove="out\appsettings.Development.json" />
+        <_ContentIncludedByDefault Remove="out\appsettings.json" />
+        <_ContentIncludedByDefault Remove="out\GeekShopping.CouponAPI.deps.json" />
+        <_ContentIncludedByDefault Remove="out\GeekShopping.CouponAPI.runtimeconfig.json" />
+    </ItemGroup>
+
+</Project>
