@@ -28,6 +28,8 @@ jobs:
           dotnet build -c Release --property WarningLevel=0 -o out
 
       - name: Nuget push
-        run: dotnet nuget push ${{ env.PROJECT_PATH }}/out/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source ${{ env.NUGET_SOURCE }} --skip-duplicate
+        run: |
+          cd ${{ env.PROJECT_PATH }}/out/
+          dotnet nuget push *.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source ${{ env.NUGET_SOURCE }} --skip-duplicate
           
           
