@@ -1,6 +1,7 @@
 ﻿FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /source
 COPY . .
+COPY ./.dockerignore /source
 RUN dotnet restore "GeekShopping.CouponAPI.csproj" 
 RUN dotnet publish "GeekShopping.CouponAPI.csproj" -c -release -o /app --no-restore
 
